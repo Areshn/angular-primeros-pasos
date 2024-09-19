@@ -1,0 +1,42 @@
+<h4>Listado</h4>
+
+<ul class="list-group">
+  <li *ngFor="
+    let character of characterList;
+    let i = index;
+    let isFirst = first;
+    let isLast = last;
+    let isEven = even;
+    let isOdd = odd;
+  "
+
+    class="list-group-item d-flex justify-content-between align-items-center"
+    [ngClass]="{
+      'list-group-item-dark': isLast,
+      'list-group-item-primary': isEven
+    }">
+<!-- [[ngClass]=""] es para agregar clases a nuestro html en este ejemplo agregamos colores condicionando con las funciones del ngFor -->
+
+    <div>
+
+      <span class="text-primary">{{ i + 1 }}. </span>
+      <span>{{ character.name }} -</span>
+      <strong> Power: </strong>
+      <span>{{ character.power }}</span>
+
+      <!-- <span> Es el primero: {{ i === 0 }} </span> -->
+  <!--     <span> Es el primero: {{  isFirst }} </span> -->
+
+      <!-- <span> Es el último: {{ i === characterList.length - 1 }} </span> -->
+  <!--     <span> Es el último: {{ isLast }} </span> -->
+  <!--
+      <span> Es par: {{ isEven }} </span>
+      <span> Es impar: {{ isOdd }} </span> -->
+
+    </div>
+
+
+    <button (click)="deleteCharacterById(character.id)" class="btn btn-danger">X</button>
+
+  </li>
+</ul>
